@@ -121,8 +121,9 @@
           Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
         }
       </script>
-      <script src="{{ asset('assets/js/soft-ui-dashboard.min.js')}}"></script>
+      <!--<script src="{{ asset('assets/js/soft-ui-dashboard.min.js')}}"></script>
       <script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"8d1966cc2d3ce5ad","serverTiming":{"name":{"cfExtPri":true,"cfL4":true,"cfSpeedBrain":true,"cfCacheStatus":true}},"version":"2024.10.1","token":"1b7cbb72744b40c580f8633c6b62637e"}' crossorigin="anonymous"></script>
+      -->
 </body>
 
 </html>
