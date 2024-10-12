@@ -19,7 +19,7 @@
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
-                        <table class="table align-items-center mb-0">
+                        <table class="table align-items-center mb-0" id="tblUsers">
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -58,7 +58,7 @@
                                             <p class="text-xs font-weight-bold mb-0">{{ $us->phone }}</p>
                                         </td>
                                         <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">{{ $us->id_rol }}</p>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $us->rol->rol }}</p>
                                         </td>
                                         <td class="text-center">
                                             <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
