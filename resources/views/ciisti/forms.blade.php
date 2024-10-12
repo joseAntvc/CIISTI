@@ -35,17 +35,20 @@
                         name="phone">
                 </div>
             </div>
-            <div class="col-md-9 mb-3 mx-auto">
-                <div class="form-user">
-                    <label for="rol" class="form-control-label">Rol</label>
-                    <select class="form-control" id="rol" name="rol">
-                        <option value="0">Selecciona un Rol</option>
-                        <option value="1">Administrador</option>
-                        <option value="2">Staff</option>
-                        <option value="3">Moderador</option>
-                    </select>
+            <!-- Se va a modificar cuando se maneje lo del login con secciones -->
+            @if(2 == '1')
+                <div class="col-md-9 mb-3 mx-auto">
+                    <div class="form-user">
+                        <label for="rol" class="form-control-label">Rol</label>
+                        <select class="form-control" id="rol" name="rol">
+                            <option value="0">Selecciona un Rol</option>
+                            <option value="1">Administrador</option>
+                            <option value="2">Staff</option>
+                            <option value="3">Moderador</option>
+                        </select>
+                    </div>
                 </div>
-            </div>
+            @endif
             <div class="d-flex justify-content-center">
                 <button type="submit" style="background-color: rgb(4, 163, 86)"
                     class="btn btn-md mt-4 mb-4 text-white">{{ $action == 'update' ? 'Actualizar' : 'Registrar' }}</button>
