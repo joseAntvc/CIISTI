@@ -12,7 +12,7 @@
                         <div>
                             <h5 class="mb-0">Usuarios</h5>
                         </div>
-                        <a onclick="users('form')" class="btn btn-sm mb-0 " style="background-color: rgb(4, 163, 86); color: white" type="button">+&nbsp;Agregar usuario</a>
+                        <a onclick=" users('form')" class="btn btn-sm mb-0 " style="background-color: rgb(4, 163, 86); color: white" type="button">+&nbsp;Agregar usuario</a>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
@@ -76,21 +76,4 @@
         </div>
     </div>
 </div>
-
-<script>
-    var ventFrame;
-    function users(action, id) {
-        var url = "{{ route('form') }}";
-        if (id) {
-            url += `/${id}`;
-        }
-        $.get(url, function(data) {
-            ventFrame = $.dialog({
-                title: '',
-                columnClass: "col-6",
-                content: data
-            });
-        });
-    }
-</script>
 @endsection
