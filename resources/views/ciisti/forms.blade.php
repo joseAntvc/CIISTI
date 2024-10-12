@@ -1,6 +1,6 @@
 <div class="d-flex justify-content-center align-items-center m-0 p-0">
     <div class="container-fluid py-3 m-0 p-0">
-        <h5 class="custom-title mb-4">Registro de usuario</h5>
+        <h5 class="custom-title mb-4">{{ $action == 'update' ? 'Actualización de usuario' : 'Registro de usuario' }}</h5>
         <form method="POST" role="form text-left">
             @csrf
             <div class="col-md-9 mb-3 mx-auto">
