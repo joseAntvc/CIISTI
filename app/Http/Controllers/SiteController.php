@@ -16,7 +16,13 @@ class SiteController extends Controller
         }
         return view('ciisti.users', compact('user'));
     }
-    public function form(){
-        return view('ciisti.forms');
+    public function form($id = null) {
+        $action = $id ? 'update' : 'add';
+        $user = null;
+        if ($id) {
+            $user = User::find($id);
+        }
+        return view('ciisti.forms', compact('action', 'user'));
     }
+
 }

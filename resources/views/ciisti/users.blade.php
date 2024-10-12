@@ -14,7 +14,7 @@
                         <div>
                             <h5 class="mb-0">Usuarios</h5>
                         </div>
-                        <a href="#" class="btn btn-sm mb-0 " style="background-color: rgb(4, 163, 86); color: white" type="button">+&nbsp; Registrar</a>
+                        <a onclick=" users('form')" class="btn btn-sm mb-0 " style="background-color: rgb(4, 163, 86); color: white" type="button">+&nbsp; Registrar</a>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
@@ -46,7 +46,7 @@
                                 @foreach ($user as $us)
                                     <tr>
                                         <td class="ps-4">
-                                            <p class="text-xs font-weight-bold mb-0">{{ $us->name }}</p>
+                                            <p class="text-xs font-weight-bold mb-0 azul">{{ $us->name }}</p>
                                         </td>
                                         <td>
                                             <p class="text-xs font-weight-bold mb-0">{{ $us->last_name }}</p>
@@ -79,4 +79,20 @@
     </div>
 </div>
 
+<script>
+    var ventFrame;
+    function users(action, id) {
+        var url = "{{ route('form') }}";
+        if (id) {
+            url += `/${id}`;
+        }
+        $.get(url, function(data) {
+            ventFrame = $.dialog({
+                title: '',
+                columnClass: "col-6",
+                content: data
+            });
+        });
+    }
+</script>
 @endsection

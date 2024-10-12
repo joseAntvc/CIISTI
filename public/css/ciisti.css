@@ -1,0 +1,17 @@
+.custom-title {
+    font-weight: bold;
+    color: #344767;
+    text-align: center;
+}
+.form-user {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+}
+
+
+
