@@ -18,6 +18,7 @@ class SiteController extends Controller
         }
         return view('ciisti.users', compact('user'));
     }
+    
     public function form($id = null) {
         $action = $id ? 'update' : 'add';
         $user = null;
