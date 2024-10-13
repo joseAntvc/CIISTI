@@ -60,10 +60,10 @@
                                         </td>
                                         <td class="text-center">
                                             <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
-                                                <i class="fas fa-user-edit text-secondary"></i>
+                                                <i class="fas fa-user-edit" style="color: #ffab3c"></i>
                                             </a>
                                             <span>
-                                                <i class="cursor-pointer fas fa-trash text-secondary"></i>
+                                                <i class="cursor-pointer fas fa-trash" style="color: #eb3f3f"></i>
                                             </span>
                                         </td>
                                     </tr>
