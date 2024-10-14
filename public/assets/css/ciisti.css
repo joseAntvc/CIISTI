@@ -13,5 +13,10 @@
     margin-bottom: 5px;
 }
 
+.form-control-user:focus {
+    border-color: rgb(4, 163, 86);
+    box-shadow: 0 0 0 2px rgb(4, 163, 86);
+}
+
 
 
