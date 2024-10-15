@@ -55,7 +55,7 @@ public function store(Request $request)
             'email.email' => 'Campo correo no tiene el formato correcto.',
             'password.required' => 'Campo contraseña es obligatorio.',
             'phone.required' => 'Campo teléfono es obligatorio.',
-            'phone.digits_between' => 'Campo teléfono no tiene el formato correcto.',
+            'phone.regex' => 'Campo teléfono no tiene el formato correcto.',
             'rol.required' => 'Campo Rol es obligatorio.',
         ]);
         // Crear el usuario en la base de datos
@@ -68,7 +68,7 @@ public function store(Request $request)
         $user->id_rol = $request->input('rol');
         $user->save();
 
-        return redirect()->route('users.index')->with('success', 'Usuario creado correctamente.');
+        return response()->json(['message' => 'Usuario registrado.'], 200);
     }
 }
 
@@ -126,7 +126,7 @@ public function store(Request $request)
         $user->id_rol = $request->input('rol');
         $user->save();
 
-        return redirect()->route('users.index')->with('success', 'Usuario creado correctamente.');
+        return response()->json(['message' => 'Datos actualizados.'], 200);
     }
     /**
      * Remove the specified resource from storage.
