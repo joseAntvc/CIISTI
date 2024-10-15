@@ -46,7 +46,7 @@ public function store(Request $request)
             'last_name' => 'required',
             'email' => 'required|email',
             'password' => 'required',
-            'phone' => 'required|regex:/^[0-9]+$/',
+            'phone' => 'required|regex:/^(\d+\s*)+$/',
             'rol' => 'required',
         ], [
             'name.required' => 'Campo nombre es obligatorio.',
@@ -58,7 +58,6 @@ public function store(Request $request)
             'phone.digits_between' => 'Campo teléfono no tiene el formato correcto.',
             'rol.required' => 'Campo Rol es obligatorio.',
         ]);
-        dd('Entro');
         // Crear el usuario en la base de datos
         $user = new User();
         $user->name = $request->input('name');
@@ -67,7 +66,6 @@ public function store(Request $request)
         $user->password = $request->input('password');
         $user->phone = $request->input('phone');
         $user->id_rol = $request->input('rol');
-        dd($user);
         $user->save();
 
         return redirect()->route('users.index')->with('success', 'Usuario creado correctamente.');
@@ -99,8 +97,36 @@ public function store(Request $request)
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, int $id)
     {
+        $user = User::find($id);
+        $request->validate([
+            'name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'phone' => 'required|regex:/^(\d+\s*)+$/',
+            'rol' => 'required',
+        ], [
+            'name.required' => 'Campo nombre es obligatorio.',
+            'last_name.required' => 'Campo apellidos es obligatorio.',
+            'email.required' => 'Campo correo es obligatorio.',
+            'email.email' => 'Campo correo no tiene el formato correcto.',
+            'password.required' => 'Campo contraseña es obligatorio.',
+            'phone.required' => 'Campo teléfono es obligatorio.',
+            'phone.digits_between' => 'Campo teléfono no tiene el formato correcto.',
+            'rol.required' => 'Campo Rol es obligatorio.',
+        ]);
+        // Crear el usuario en la base de datos
+        $user->name = $request->input('name');
+        $user->last_name = $request->input('last_name');
+        $user->email = $request->input('email');
+        $user->password = $request->input('password');
+        $user->phone = $request->input('phone');
+        $user->id_rol = $request->input('rol');
+        $user->save();
+
+        return redirect()->route('users.index')->with('success', 'Usuario creado correctamente.');
     }
     /**
      * Remove the specified resource from storage.

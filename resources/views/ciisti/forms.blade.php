@@ -3,6 +3,9 @@
         <h5 class="custom-title mb-4">{{ $action == 'update' ? 'Actualización de usuario' : 'Registro de usuario' }}</h5>
         <form action="{{ $action == 'update' ? route('users.update', $user->id) : route('users.store') }}" method="POST">
             @csrf
+            @if($action == 'update')
+                @method('PUT')
+            @endif
             <div class="col-md-9 mb-3 mx-auto">
                 <div class="form-user">
                     <label for="name" class="form-control-label">Nombre</label>
