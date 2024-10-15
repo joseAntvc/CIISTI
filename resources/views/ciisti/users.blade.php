@@ -1,9 +1,7 @@
 @extends('layouts.ciisti')
 
 @section('content')
-
 <div>
-
     <div class="row">
         <div class="col-12">
             <div class="card mb-4 mx-4">
@@ -12,7 +10,7 @@
                         <div>
                             <h5 class="mb-0">Usuarios</h5>
                         </div>
-                        <a onclick=" users('form')" class="btn btn-sm mb-0 " style="background-color: rgb(4, 163, 86); color: white" type="button">+&nbsp;Agregar usuario</a>
+                        <a onclick="formUser()" class="btn btn-sm mb-0 " style="background-color: rgb(4, 163, 86); color: white" type="button">+&nbsp;Agregar usuario</a>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
@@ -59,7 +57,7 @@
                                             <p class="text-xs font-weight-bold mb-0">{{ $us->rol->rol }}</p>
                                         </td>
                                         <td class="text-center">
-                                            <a href="#" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+                                            <a onclick="formUser({{ $us->id }})" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
                                                 <i class="fas fa-user-edit" style="color: #ffab3c"></i>
                                             </a>
                                             <span>
