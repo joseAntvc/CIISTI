@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class User extends Model
 {
     use HasFactory;
+    public $timestamps = false; 
 
     public function rol(): BelongsTo
     {

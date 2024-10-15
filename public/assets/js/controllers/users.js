@@ -1,8 +1,10 @@
 var ventFrame;
-function users(action, id) {
-    var url = '/'+action;
+function formUser(id) {
+    var url = '/users/';
     if (id) {
-        url += '/'+id;
+        url += id +'/edit/';
+    } else {
+        url += 'create'
     }
     $.get(url, function(data) {
         ventFrame = $.dialog({
