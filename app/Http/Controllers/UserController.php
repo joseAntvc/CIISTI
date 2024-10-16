@@ -17,7 +17,7 @@ class UserController extends Controller
         if($userRole == 1){
             $user = User::all();
         } else {
-            $user = User::where('id_rol', 2)->get();
+            $user = User::where('id_rol', 3)->get();
         }
         return view('ciisti.users', compact('user'));
     }
@@ -47,7 +47,7 @@ public function store(Request $request)
             'email' => 'required|email',
             'password' => 'required',
             'phone' => 'required|regex:/^(\d+\s*)+$/',
-            'rol' => 'required',
+            'rol' => 'required|not_in:0',
         ], [
             'name.required' => 'Campo nombre es obligatorio.',
             'last_name.required' => 'Campo apellidos es obligatorio.',
@@ -56,7 +56,7 @@ public function store(Request $request)
             'password.required' => 'Campo contraseña es obligatorio.',
             'phone.required' => 'Campo teléfono es obligatorio.',
             'phone.regex' => 'Campo teléfono no tiene el formato correcto.',
-            'rol.required' => 'Campo Rol es obligatorio.',
+            'rol.not_in' => 'Campo rol es obligatorio.',
         ]);
         // Crear el usuario en la base de datos
         $user = new User();
@@ -106,7 +106,7 @@ public function store(Request $request)
             'email' => 'required|email',
             'password' => 'required',
             'phone' => 'required|regex:/^(\d+\s*)+$/',
-            'rol' => 'required',
+            'rol' => 'required|not_in:0',
         ], [
             'name.required' => 'Campo nombre es obligatorio.',
             'last_name.required' => 'Campo apellidos es obligatorio.',
@@ -115,7 +115,7 @@ public function store(Request $request)
             'password.required' => 'Campo contraseña es obligatorio.',
             'phone.required' => 'Campo teléfono es obligatorio.',
             'phone.digits_between' => 'Campo teléfono no tiene el formato correcto.',
-            'rol.required' => 'Campo Rol es obligatorio.',
+            'rol.not_in' => 'Campo rol es obligatorio.',
         ]);
         // Crear el usuario en la base de datos
         $user->name = $request->input('name');
@@ -131,8 +131,11 @@ public function store(Request $request)
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(int $id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+
+        return response()->json(['message' => 'Usuario eliminado.']);
     }
 }

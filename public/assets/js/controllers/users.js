@@ -15,6 +15,45 @@ function formUser(id) {
     });
 }
 
+function deleteUser(id, rol, usuario){
+    $.confirm({
+        title: 'Deseas eliminar a',
+        content: 'Rol: ' + rol +" <br>Usuario: " + usuario,
+        type: "red",
+        columnclass: "col-6",
+        buttons: {
+            confirm: {
+                text: 'Confirmar',
+                btnClass: 'btn btn-delete-user-confirmar',
+                action: function() {
+                    $.ajax({
+                        url: '/users/' + id,
+                        method: 'DELETE',
+                        data: {
+                            _token: $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            window.location.href = '/users';
+                        },
+                        error: function(xhr) {
+                            $.alert({
+                                title: 'Error',
+                                content: 'No se pudo eliminar el usuario. Por favor, intenta de nuevo.',
+                                type: 'red'
+                            });
+                        }
+                    });
+                }
+            },
+            cancel: {
+                text: 'Cancelar',
+                btnClass: 'btn-red btn-delete-user-cancelar',
+                action: function() {
+                }
+            }
+        }
+    });
+}
 
 $(document).on('submit', '#userForm', function(event) {
     event.preventDefault();
@@ -64,3 +103,4 @@ $(document).on('submit', '#userForm', function(event) {
         }
     });
 });
+
