@@ -22,5 +22,27 @@
     box-shadow: 0 0 0 2px #ffab3c;
 }
 
+.btn-delete-user-cancelar{
+    background-color: #eb3f3f;
+    color: white;
+    border: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+.btn-delete-user-cancelar:hover {
+    background-color: #c73232;
+    color: #f8f9fa;
+}
+
+.btn-delete-user-confirmar {
+    background-color: #04a356;
+    color: white;
+    border: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-delete-user-confirmar:hover {
+    background-color: #028a4b;
+    color: #f8f9fa;
+}
 
 

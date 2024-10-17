@@ -60,9 +60,9 @@
                                             <a onclick="formUser({{ $us->id }})" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
                                                 <i class="fas fa-user-edit" style="color: #ffab3c"></i>
                                             </a>
-                                            <span>
+                                            <a onclick="deleteUser({{ $us->id }}, '{{ $us->rol->rol}}', '{{ $us->name }} {{ $us->last_name}}')" class="mx-3" data-bs-toggle="tooltip" >
                                                 <i class="cursor-pointer fas fa-trash" style="color: #eb3f3f"></i>
-                                            </span>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
