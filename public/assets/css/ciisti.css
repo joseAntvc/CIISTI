@@ -21,6 +21,10 @@
     border-color: #ffab3c;
     box-shadow: 0 0 0 2px #ffab3c;
 }
+.form-control-login:focus {
+    border-color: #2152FF;
+    box-shadow: 0 0 0 2px #2152FF;
+}
 
 .btn-delete-user-cancelar{
     background-color: #eb3f3f;
@@ -45,4 +49,9 @@
     color: #f8f9fa;
 }
 
+.bordered-text-login {
+    color: white !important;
+    font-weight: bold;
+    -webkit-text-stroke: 1.5px #33cc45;
+}
 
