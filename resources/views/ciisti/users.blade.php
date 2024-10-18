@@ -1,4 +1,4 @@
-@extends('layouts.ciisti')
+@extends('layouts.navbar')
 
 @section('content')
 <div>
