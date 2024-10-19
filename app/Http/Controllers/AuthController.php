@@ -9,24 +9,31 @@ class AuthController extends Controller
 {
     public function login(Request $request)
     {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
         $credentials = $request->only('email', 'password');
-
         $user = \App\Models\User::where('email', $credentials['email'])->first();
 
-        // Comparación directa de la contraseña sin usar Hash::check
         if ($user && $credentials['password'] === $user->password) {
-            Auth::login($user);  // Iniciar sesión si coincide la contraseña
+            Auth::login($user);
             session(['role' => $user->rol->rol]);
-            return redirect()->route('users');
-        } else {
-            return back()->withErrors(['email' => 'Credenciales incorrectas']);
+            return response()->json([
+                'message' => 'Login exitoso',
+                'redirect_url' => route('users')
+            ]);
         }
+
+        return response()->json([
+            'message' => 'Correo o contraseña incorrectos.'
+        ], 422);
     }
 
     public function logout()
     {
         Auth::logout();
-        session()->flush(); // Limpiar la sesión
+        session()->flush();
         return redirect()->route('login');
     }
 }

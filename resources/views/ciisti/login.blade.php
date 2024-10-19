@@ -15,7 +15,7 @@
                                 </div>
                                 <div class="card-body">
                                     <p class="mt-3"><b>Ingresa tus credenciales para acceder</b></p>
-                                    <form role="form" method="POST" action="{{ route('login') }}">
+                                    <form role="form" method="POST" action="{{ route('login') }}" id="loginForm">
                                         @csrf
                                         <label for="email" style="font-size: 14px"><strong>Correo electrónico</strong></label>
                                         <div class="mb-3">
