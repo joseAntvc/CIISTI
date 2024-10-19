@@ -10,8 +10,13 @@ class Rol extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
+    /**
+     * Relación: Un rol tiene muchos usuarios.
+     */
     public function users(): HasMany
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class, 'id_rol', 'id');
     }
 }

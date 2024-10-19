@@ -20,7 +20,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link active"
-                    href="{{ route('users.index') }}">
+                    href="">
                     <div
                         class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center nav-var-bg">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-people" viewBox="0 0 16 16">

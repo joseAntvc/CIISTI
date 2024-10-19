@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -12,12 +13,17 @@ class UserController extends Controller
      */
     public function index()
     {
+        $user = Auth::user(); // Obtener usuario autenticado
+        $roleName = $user->rol->rol; // Obtener nombre del rol
+
         //Se va a modificar cuando se maneje lo del login con secciones
-        $userRole = 1;
-        if($userRole == 1){
+
+        if($roleName == "Administrador"){
             $user = User::all();
-        } else {
+        } else if($roleName == "Staff") {
             $user = User::where('id_rol', 3)->get();
+        } else{
+            return redirect()->route('users')->with('error', 'No tienes permisos para ver esta información.');
         }
         return view('ciisti.users', compact('user'));
     }
