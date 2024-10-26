@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EventController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
@@ -23,3 +24,7 @@ Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('users', [UserController::class, 'index'])
     ->middleware('auth')
     ->name('users');
+
+Route::get('events', [EventController::class, 'index'])
+    ->middleware('auth')
+    ->name('events');

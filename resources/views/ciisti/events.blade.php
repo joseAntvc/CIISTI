@@ -8,9 +8,9 @@
                 <div class="card-header pb-0">
                     <div class="d-flex flex-row justify-content-between">
                         <div>
-                            <h5 class="mb-0">Usuarios</h5>
+                            <h5 class="mb-0">Eventos</h5>
                         </div>
-                        <a onclick="formUser()" class="btn btn-sm mb-0 " style="background-color: rgb(4, 163, 86); color: white" type="button">+&nbsp;Agregar usuario</a>
+                        <a onclick="formUser()" class="btn btn-sm mb-0 " style="background-color: rgb(4, 163, 86); color: white" type="button">+&nbsp;Agregar evento</a>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
@@ -19,19 +19,22 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Nombre
+                                        Título
                                     </th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Apellidos
+                                        Día
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Correo
+                                        Hora
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Teléfono
+                                        Lugar
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Rol
+                                        Tipo
+                                    </th>
+                                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Estatus
                                     </th>
                                     <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Opciones
@@ -39,28 +42,31 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($user as $us)
+                                @foreach ($events as $event)
                                     <tr>
                                         <td class="ps-4">
-                                            <p class="text-xs font-weight-bold mb-0 azul">{{ $us->name }}</p>
+                                            <p class="text-xs font-weight-bold mb-0 azul">{{ $event->title }}</p>
                                         </td>
                                         <td>
-                                            <p class="text-xs font-weight-bold mb-0">{{ $us->last_name }}</p>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $event->date }}</p>
                                         </td>
                                         <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">{{ $us->email }}</p>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $event->date_time }}</p>
                                         </td>
                                         <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">{{ $us->phone }}</p>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $event->location->name }}</p>
                                         </td>
                                         <td class="text-center">
-                                            <p class="text-xs font-weight-bold mb-0">{{ $us->rol->rol }}</p>
+                                            <p class="text-xs font-weight-bold mb-0">{{ $event->typeEvent->type_event}}</p>
                                         </td>
                                         <td class="text-center">
-                                            <a onclick="formUser({{ $us->id }})" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+                                            <p class="text-xs font-weight-bold mb-0">{{ $event->status->status}}</p>
+                                        </td>
+                                        <td class="text-center">
+                                            <a onclick="" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
                                                 <i class="cursor-pointer fas fa-user-edit" style="color: #ffab3c"></i>
                                             </a>
-                                            <a onclick="deleteUser({{ $us->id }}, '{{ $us->rol->rol}}', '{{ $us->name }} {{ $us->last_name}}')" class="mx-3" data-bs-toggle="tooltip" >
+                                            <a onclick="" class="mx-3" data-bs-toggle="tooltip" >
                                                 <i class="cursor-pointer fas fa-trash" style="color: #eb3f3f"></i>
                                             </a>
                                         </td>
