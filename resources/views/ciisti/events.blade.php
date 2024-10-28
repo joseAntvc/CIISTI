@@ -10,7 +10,7 @@
                         <div>
                             <h5 class="mb-0">Eventos</h5>
                         </div>
-                        <a onclick="formUser()" class="btn btn-sm mb-0 " style="background-color: rgb(4, 163, 86); color: white" type="button">+&nbsp;Agregar evento</a>
+                        <a onclick="formEvent()" class="btn btn-sm mb-0 " style="background-color: rgb(4, 163, 86); color: white" type="button">+&nbsp;Agregar evento</a>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
@@ -63,7 +63,7 @@
                                             <p class="text-xs font-weight-bold mb-0">{{ $event->status->status}}</p>
                                         </td>
                                         <td class="text-center">
-                                            <a onclick="" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit user">
+                                            <a onclick="formUser({{ $event->id }})" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit event">
                                                 <i class="cursor-pointer fas fa-user-edit" style="color: #ffab3c"></i>
                                             </a>
                                             <a onclick="" class="mx-3" data-bs-toggle="tooltip" >

@@ -6,6 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
+use function Laravel\Prompts\alert;
+
 class UserController extends Controller
 {
     /**
@@ -18,12 +20,12 @@ class UserController extends Controller
 
         //Se va a modificar cuando se maneje lo del login con secciones
 
-        if($roleName == "Administrador"){
-            $user = User::all();
-        } else if($roleName == "Staff") {
+        if ($roleName == "Administrador") {
+            $user = User::where('id', '!=', $user->id)->get();
+        } else if ($roleName == "Staff") {
             $user = User::where('id_rol', 3)->get();
-        } else{
-            return redirect()->route('users')->with('error', 'No tienes permisos para ver esta información.');
+        } else {
+            return redirect()->route('login');
         }
         return view('ciisti.users', compact('user'));
     }
@@ -35,7 +37,7 @@ class UserController extends Controller
     {
         $action = "create";
         $user = null;
-        return view('ciisti.forms', compact('action', 'user'));
+        return view('components.formUser', compact('action', 'user'));
     }
 
     /**
@@ -97,7 +99,7 @@ public function store(Request $request)
         if (!$user) {
             return redirect()->route('users.index')->with('error', 'Usuario no encontrado.');
         }
-        return view('ciisti.forms', compact('action', 'user'));
+        return view('components.formUser', compact('action', 'user'));
     }
 
     /**

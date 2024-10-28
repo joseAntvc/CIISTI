@@ -29,6 +29,7 @@
     <script src="{{ asset('assets/js/plugins/fullcalendar.min.js')}}"></script>
     <script src="{{ asset('assets/js/plugins/chartjs.min.js')}}"></script>
     <script src="{{ asset('assets/js/controllers/users.js')}}"></script>
+    <script src="{{ asset('assets/js/controllers/events.js')}}"></script>
     <script src="{{ asset('assets/js/controllers/login.js')}}"></script>
 
     <script>

@@ -15,6 +15,8 @@ Route::post('/', [AuthController::class, 'login']);
 //Ruta para la vista de los usuarios
 Route::resource('users', UserController::class);
 
+Route::resource('events', EventController::class);
+
 //Ruta del formulario
 Route::get('/form/{id?}', [SiteController::class, 'form'])->name('form');
 
