@@ -9,6 +9,8 @@ class Event extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     // Especifica la tabla si no sigue la convención de nombres pluralizados
     protected $table = 'events';
 

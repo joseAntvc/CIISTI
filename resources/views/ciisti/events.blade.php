@@ -63,7 +63,7 @@
                                             <p class="text-xs font-weight-bold mb-0">{{ $event->status->status}}</p>
                                         </td>
                                         <td class="text-center">
-                                            <a onclick="formUser({{ $event->id }})" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit event">
+                                            <a onclick="formEvent({{ $event->id }})" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit event">
                                                 <i class="cursor-pointer fas fa-user-edit" style="color: #ffab3c"></i>
                                             </a>
                                             <a onclick="" class="mx-3" data-bs-toggle="tooltip" >

@@ -1,7 +1,7 @@
 <div class="d-flex justify-content-center align-items-center m-0 p-0">
     <div class="container-fluid py-3 m-0 p-0">
         <h5 class="custom-title mb-4">{{ $action == 'update' ? 'Actualización de evento' : 'Registro de evento' }}</h5>
-        <form action="{{ $action == 'update' ? route('events.update', $event->id) : route('events.store') }}" method="POST" id="userForm">
+        <form action="{{ $action == 'update' ? route('events.update', $event->id) : route('events.store') }}" method="POST" id="eventForm">
             @csrf
             @if($action == 'update')
                 @method('PUT')
@@ -17,7 +17,7 @@
             <div class="col-md-9 mb-3 mx-auto">
                 <div class="form-user">
                     <label for="description" class="form-control-label">Descripción</label>
-                    <textarea class="form-control {{ $action == 'update' ? 'form-control-user-update' : 'form-control-user-add'}}" type="textarea" placeholder="..." id="description" name="description" value="{{ old('description', $event ? $event->description : '') }}"></textarea>
+                    <textarea class="form-control {{ $action == 'update' ? 'form-control-user-update' : 'form-control-user-add'}}" type="textarea" placeholder="..." id="description" name="description">{{ old('description', $event ? $event->description : '') }}</textarea>
                 </div>
             </div>
 
@@ -39,7 +39,7 @@
                         <option value="0">Selecciona un ubicación</option>
                         <option value="" disabled>──────────</option>
                         @foreach($locations as $location)
-                            <option value="{{ $location->id }}" {{ ($event && $user->id_location == $location->id) ? 'selected' : '' }}> {{ $location->name }} <span> - {{ $location->capacity }}</span></option>
+                            <option value="{{ $location->id }}" {{ ($event && $event->id_location == $location->id) ? 'selected' : '' }}> {{ $location->name }} </option>
                         @endforeach
                     </select>
                 </div>
@@ -47,7 +47,7 @@
             <div class="col-md-9 mb-3 mx-auto">
                 <div class="form-user">
                     <label for="comment" class="form-control-label">Comentarios</label>
-                    <textarea class="form-control {{ $action == 'update' ? 'form-control-user-update' : 'form-control-user-add'}}" type="textarea" placeholder="..." id="comment" name="comment" value="{{ old('comment', $event ? $event->comment : '') }}"></textarea>
+                    <textarea class="form-control {{ $action == 'update' ? 'form-control-user-update' : 'form-control-user-add'}}" type="textarea" placeholder="..." id="comment" name="comment">{{ old('comment', $event ? $event->comment : '') }}</textarea>
                 </div>
             </div>
             <div class="col-md-9 mb-3 mx-auto d-flex justify-content-between">
@@ -57,7 +57,7 @@
                         <option value="0">Selecciona un tipo</option>
                         <option value="" disabled>──────────</option>
                         @foreach($types as $type)
-                            <option value="{{ $type->id }}" {{ ($event && $user->id_type_event == $type->id) ? 'selected' : '' }}>{{ $type->type_event }}</option>
+                            <option value="{{ $type->id }}" {{ ($event && $event->id_type_event == $type->id) ? 'selected' : '' }}>{{ $type->type_event }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -67,7 +67,7 @@
                         <option value="0">Selecciona un estatus</option>
                         <option value="" disabled>──────────</option>
                         @foreach($statuses as $status)
-                            <option value="{{ $status->id }}" {{ ($event && $user->id_status == $status->id) ? 'selected' : '' }}>{{ $status->status }}</option>
+                            <option value="{{ $status->id }}" {{ ($event && $event->id_status == $status->id) ? 'selected' : '' }}>{{ $status->status }}</option>
                         @endforeach
                     </select>
                 </div>
