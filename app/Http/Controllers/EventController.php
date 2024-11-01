@@ -88,4 +88,41 @@ class EventController extends Controller
 
         return response()->json(['message' => 'Event eliminado.']);
     }
+
+    public function update(Request $request, int $id)
+    {
+        $event = Event::find($id);
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'date' => 'required|regex:/^\d{4}-\d{2}-\d{2}$/',
+            'date_time' => 'required|regex:/^\d{2}:\d{2}$/',
+            'location' => 'required|not_in:0',
+            'type_event' => 'required|not_in:0',
+            'status' => 'required|not_in:0',
+        ], [
+            'title.required' => 'Campo título es obligatorio.',
+            'description.required' => 'Campo descripción es obligatorio.',
+            'date.required' => 'Campo fecha es obligatorio.',
+            'date.regex' => 'Campo fecha incorrecto. Debe tener el formato yyyy-mm-dd.',
+            'date_time.required' => 'Campo horario es obligatorio.',
+            'date_time.regex' => 'Campo hora incorrecto. Debe tener el formato hh:mm.',
+            'location.not_in' => 'Campo ubicación es obligatorio.',
+            'type_event.not_in' => 'Campo tipo de evento es obligatorio.',
+            'status.not_in' => 'Campo estado es obligatorio.',
+        ]);
+
+        $event->title = $request->input('title');
+        $event->description = $request->input('description');
+        $event->date = $request->input('date');
+        $event->date_time = $request->input('date_time');
+        $event->comment =  $request->input('comment');
+        $event->id_location = $request->input('location');
+        $event->id_type_event = $request->input('type_event');
+        $event->id_status = $request->input('status');
+        $event->id_speaker = $request->input('speaker');
+        $event->save();
+
+        return response()->json(['message' => 'Datos actualizados.'], 200);
+    }
 }
