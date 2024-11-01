@@ -14,6 +14,7 @@ function formEvent(id) {
     });
 }
 
+
 $(document).on('submit', '#eventForm', function(event) {
     event.preventDefault();
 
@@ -62,3 +63,43 @@ $(document).on('submit', '#eventForm', function(event) {
         }
     });
 });
+
+function deleteEvent(id, title, type_Event){
+    $.confirm({
+        title: 'Deseas eliminar a',
+        content: 'Evento: ' + title +" <br>Tipo de evento: " + type_Event,
+        type: "red",
+        columnclass: "col-6",
+        buttons: {
+            confirm: {
+                text: 'Confirmar',
+                btnClass: 'btn btn-delete-user-confirmar',
+                action: function() {
+                    $.ajax({
+                        url: '/events/' + id,
+                        method: 'DELETE',
+                        data: {
+                            _token: $('meta[name="csrf-token"]').attr('content')
+                        },
+                        success: function(response) {
+                            window.location.href = '/events';
+                        },
+                        error: function(xhr) {
+                            $.alert({
+                                title: 'Error',
+                                content: 'No se pudo eliminar el evento. Por favor, intenta de nuevo.',
+                                type: 'red'
+                            });
+                        }
+                    });
+                }
+            },
+            cancel: {
+                text: 'Cancelar',
+                btnClass: 'btn-red btn-delete-user-cancelar',
+                action: function() {
+                }
+            }
+        }
+    });
+}

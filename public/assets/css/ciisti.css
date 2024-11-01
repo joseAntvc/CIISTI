@@ -14,12 +14,12 @@
 }
 
 .form-control-user-add:focus {
-    border-color: rgb(4, 163, 86);
-    box-shadow: 0 0 0 2px rgb(4, 163, 86);
+    border-color: rgb(4, 163, 86) !important;
+    box-shadow: 0 0 0 2px rgb(4, 163, 86) !important;
 }
 .form-control-user-update:focus {
-    border-color: #ffab3c;
-    box-shadow: 0 0 0 2px #ffab3c;
+    border-color: #ffab3c !important;
+    box-shadow: 0 0 0 2px #ffab3c !important;
 }
 .form-control-login:focus {
     border-color: #2152FF;

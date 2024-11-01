@@ -66,7 +66,7 @@
                                             <a onclick="formEvent({{ $event->id }})" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit event">
                                                 <i class="cursor-pointer fas fa-user-edit" style="color: #ffab3c"></i>
                                             </a>
-                                            <a onclick="" class="mx-3" data-bs-toggle="tooltip" >
+                                            <a onclick="deleteEvent({{ $event->id }}, '{{ $event->title }}', '{{ $event->typeEvent->type_event}}')" class="mx-3" data-bs-toggle="tooltip" >
                                                 <i class="cursor-pointer fas fa-trash" style="color: #eb3f3f"></i>
                                             </a>
                                         </td>

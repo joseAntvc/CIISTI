@@ -37,7 +37,7 @@ class UserController extends Controller
     {
         $action = "create";
         $user = null;
-        return view('components.formUser', compact('action', 'user'));
+        return view('components.form_user', compact('action', 'user'));
     }
 
     /**
@@ -99,7 +99,7 @@ public function store(Request $request)
         if (!$user) {
             return redirect()->route('users.index')->with('error', 'Usuario no encontrado.');
         }
-        return view('components.formUser', compact('action', 'user'));
+        return view('components.form_user', compact('action', 'user'));
     }
 
     /**

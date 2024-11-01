@@ -25,7 +25,7 @@ class EventController extends Controller
         $types = TypeEvent::all();
         $statuses = Status::all();
 
-        return view('components.formEvent', compact('action', 'event', 'locations', 'types', 'statuses'));
+        return view('components.form_event', compact('action', 'event', 'locations', 'types', 'statuses'));
     }
     public function store(Request $request)
     {
@@ -78,6 +78,14 @@ class EventController extends Controller
         if (!$event) {
             return redirect()->route('events.index')->with('error', 'Evento no encontrado.');
         }
-        return view('components.formEvent', compact('action', 'event', 'locations', 'types', 'statuses'));
+        return view('components.form_event', compact('action', 'event', 'locations', 'types', 'statuses'));
+    }
+
+    public function destroy(int $id)
+    {
+        $event = Event::find($id);
+        $event->delete();
+
+        return response()->json(['message' => 'Event eliminado.']);
     }
 }
