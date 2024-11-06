@@ -66,21 +66,22 @@
                                             <a onclick="formEvent({{ $event->id }})" class="mx-3" data-bs-toggle="tooltip" data-bs-original-title="Edit event">
                                                 <i class="cursor-pointer fa fa-calendar-plus-o" style="color: #ffab3c"></i>
                                             </a>
-                                            <a onclick="deleteEvent({{ $event->id }}, '{{ $event->title }}', '{{ $event->typeEvent->type_event}}')" class="mx-3" data-bs-toggle="tooltip" >
-                                                <i class="cursor-pointer fas fa-trash" style="color: #eb3f3f"></i>
-                                            </a>
-                                            <a onclick="deleteEvent({{ $event->id }}, '{{ $event->title }}', '{{ $event->typeEvent->type_event}}')" class="mx-3" data-bs-toggle="tooltip" >
-                                                <i class="cursor-pointer fa fa-user-plus" style="color: #423bff"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+                                                <a onclick="deleteEvent({{ $event->id }}, '{{ $event->title }}', '{{ $event->typeEvent->type_event }}')"
+                                                    class="mx-2" data-bs-toggle="tooltip">
+                                                    <i class="cursor-pointer fas fa-trash" style="color: #eb3f3f"></i>
+                                                </a>
+                                                <a onclick="" class="mx-2" data-bs-toggle="tooltip">
+                                                    <i class="cursor-pointer fas fa-user-plus" style="color: blue"></i>
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
