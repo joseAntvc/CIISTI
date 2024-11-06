@@ -10,7 +10,15 @@
                         <div>
                             <h5 class="mb-0">Eventos</h5>
                         </div>
-                        <a onclick="formEvent()" class="btn btn-sm mb-0 " style="background-color: rgb(4, 163, 86); color: white" type="button">+&nbsp;Agregar evento</a>
+                        <div class="d-flex flex-row align-items-center">
+                            <select class="form-control custom-select me-4 mb-0">
+                                <option>Todos</option>
+                                <option value="" disabled>───────</option>
+                                <option>Programado</option>
+                                <option>Cancelado</option>
+                            </select>
+                            <a onclick="formEvent()" class="btn btn-sm mb-0 custom-button" type="button">+&nbsp;Agregar evento</a>
+                        </div>
                     </div>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
