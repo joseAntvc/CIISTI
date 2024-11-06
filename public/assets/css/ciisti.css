@@ -16,6 +16,7 @@
 .form-control-user-add:focus {
     border-color: rgb(4, 163, 86) !important;
     box-shadow: 0 0 0 2px rgb(4, 163, 86) !important;
+    color: #f8f9fa !important;
 }
 .form-control-user-update:focus {
     border-color: #ffab3c !important;
@@ -55,3 +56,20 @@
     -webkit-text-stroke: 1.5px #33cc45;
 }
 
+.custom-select {
+    width: auto;
+    height: 32px;
+    padding: 0 10px;
+    background: rgb(220, 220, 220) !important;
+    border: 1px solid #ced4da;
+    text-align: center;
+}
+.custom-select:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.custom-button {
+    background-color: rgb(4, 163, 86);
+    color: white !important;
+}

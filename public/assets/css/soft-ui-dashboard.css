@@ -2178,8 +2178,6 @@ progress {
 }
 .form-control:focus {
     background-color: #fff;
-    border-color: #e293d3;
-    box-shadow: 0 0 0 2px #e9aede;
     color: #495057;
     outline: 0;
 }
