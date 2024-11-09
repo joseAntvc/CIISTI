@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\Location;
 use App\Models\Status;
 use App\Models\TypeEvent;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 
@@ -17,6 +18,35 @@ class EventController extends Controller
         $events = Event::all();
         return view('ciisti.events', compact('events'));
     }
+
+    public function getModerators(int $id)
+    {
+        $event = Event::find($id);
+        $user = User::where('id_rol', 3)->get();
+        $moderatorNames = $event->moderators()->get();
+        return view('components.form_moderator', compact('user', 'moderatorNames', 'event'));
+    }
+
+    public function updateModerators($eventId, Request $request)
+    {
+        // Validar que 'moderator_ids' sea un array de IDs de usuarios, permitiendo que esté vacío
+        $validated = $request->validate([
+            'moderator_ids' => 'array', // Permite un array vacío
+            'moderator_ids.*' => 'exists:users,id', // Verifica que cada ID existe en la tabla 'users'
+        ]);
+
+        // Encontrar el evento
+        $event = Event::findOrFail($eventId);
+
+        // Si el array 'moderator_ids' está vacío, se eliminarán todos los moderadores
+        $event->moderators()->sync($validated['moderator_ids'] ?? []);
+
+        return response()->json([
+            'message' => 'Moderadores actualizados con éxito.',
+            'moderators' => $event->moderators // Retornar los nuevos moderadores asociados al evento si es necesario
+        ]);
+    }
+
     public function create()
     {
         $action = "create";
@@ -84,6 +114,7 @@ class EventController extends Controller
     public function destroy(int $id)
     {
         $event = Event::find($id);
+        $event->moderators()->sync([]);
         $event->delete();
 
         return response()->json(['message' => 'Event eliminado.']);

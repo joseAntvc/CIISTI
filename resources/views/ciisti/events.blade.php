@@ -78,7 +78,7 @@
                                                     class="mx-2" data-bs-toggle="tooltip">
                                                     <i class="cursor-pointer fas fa-trash" style="color: #eb3f3f"></i>
                                                 </a>
-                                                <a onclick="" class="mx-2" data-bs-toggle="tooltip">
+                                                <a onclick="formModerator({{ $event->id }})" id="moderators" class="mx-2" data-bs-toggle="tooltip" >
                                                     <i class="cursor-pointer fas fa-user-plus" style="color: blue"></i>
                                                 </a>
                                             </td>
