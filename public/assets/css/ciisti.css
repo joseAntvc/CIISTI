@@ -16,7 +16,6 @@
 .form-control-user-add:focus {
     border-color: rgb(4, 163, 86) !important;
     box-shadow: 0 0 0 2px rgb(4, 163, 86) !important;
-    color: #f8f9fa !important;
 }
 .form-control-user-update:focus {
     border-color: #ffab3c !important;
@@ -72,4 +71,14 @@
 .custom-button {
     background-color: rgb(4, 163, 86);
     color: white !important;
+}
+
+
+.ms-auto {
+    margin-left: auto !important;
+}
+
+.tag {
+    background-color: #DCDCDC;
+    color: black;
 }

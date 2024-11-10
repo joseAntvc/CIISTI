@@ -31,6 +31,7 @@
     <script src="{{ asset('assets/js/controllers/users.js')}}"></script>
     <script src="{{ asset('assets/js/controllers/events.js')}}"></script>
     <script src="{{ asset('assets/js/controllers/login.js')}}"></script>
+    <script src="{{ asset('assets/js/controllers/emails.js')}}"></script>
 
     <script>
         var win = navigator.platform.indexOf('Win') > -1;
