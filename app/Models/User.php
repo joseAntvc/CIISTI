@@ -27,4 +27,10 @@ class User extends Authenticatable
     {
         return $this->rol->name === $roleName;
     }
+
+    public function moderatedEvents()
+    {
+        return $this->belongsToMany(Event::class, 'moderations', 'id_user', 'id_event');
+    }
+
 }

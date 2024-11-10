@@ -103,3 +103,14 @@ function deleteEvent(id, title, type_Event){
         }
     });
 }
+
+function formModerator(id) {
+    var url = '/events/' + id + '/moderators';
+    $.get(url, function(data) {
+        ventFrame = $.dialog({
+            title: '',
+            columnClass: "col-4",
+            content: data
+        });
+    });
+}
