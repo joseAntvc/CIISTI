@@ -18,7 +18,7 @@
             <form action="" method="POST" id="moderatorForm">
                 @csrf
                 <div class="col-md-9 mb-3 mx-auto">
-                    <select class="select-moderator form-control-user-update" id="moderatorSelect">
+                    <select class="form-control form-control-user-update" id="moderatorSelect">
                         <option value="" disabled selected>Seleccione un moderador</option>
                         @foreach ($user as $users)
                             @if ($users->id != 7)
