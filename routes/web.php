@@ -15,10 +15,12 @@ Route::post('/', [AuthController::class, 'login']);
 //Ruta para la vista de los usuarios
 Route::resource('users', UserController::class);
 
+//Ruta para la vista de eventos
 Route::resource('events', EventController::class);
 
 //Ruta del formulario
-Route::get('/form/{id?}', [SiteController::class, 'form'])->name('form');
+Route::get('/email/form', [SiteController::class, 'form'])->name('form');
+Route::post('/email', [SiteController::class, 'email'])->name('email');
 
 Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', [AuthController::class, 'logout'])->name('logout');
