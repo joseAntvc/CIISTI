@@ -9,6 +9,8 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
+use function Laravel\Prompts\alert;
+
 class ComunicationMail extends Mailable
 {
     use Queueable, SerializesModels;
@@ -37,6 +39,7 @@ class ComunicationMail extends Mailable
      */
     public function content(): Content
     {
+        alert($this->users['title']);
         return new Content(
             view: 'emails.comunication',
             with:[

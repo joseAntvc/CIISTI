@@ -7,6 +7,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
+use function Laravel\Prompts\alert;
+
 class SiteController extends Controller
 {
     public function login()
