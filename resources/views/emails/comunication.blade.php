@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,6 +14,7 @@
             margin: 0;
             padding: 0;
         }
+
         .container {
             background-color: #fff;
             max-width: 600px;
@@ -20,41 +22,56 @@
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         h2 {
             color: rgb(4, 163, 86);
         }
+
         p {
             line-height: 1.6;
         }
+
         .message {
             background-color: #e5e5e5;
             border-left: 4px solid rgb(4, 163, 86);
             padding: 10px 15px;
             margin: 20px 0;
         }
+
         .footer {
             margin-top: 30px;
             text-align: center;
             font-size: 0.9em;
             color: #777;
         }
+
         .footer a {
             color: rgb(4, 163, 86);
             text-decoration: none;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h2>Mensaje del CIISTI</h2>
-        <h3>Asunto: {{ $users['title'] }}</h3>
+        @if (isset($users['action']))
+            <p><strong>Asunto: {{ $users['action'] }}</strong></p>
+        @else
+            <h3>Asunto: {{ $users['title'] }}</h3>
+        @endif
         <p>Se a dejado el siguiente mensaje:</p>
         <div class="message">
-            <p>{{ $users['description'] }}</p>
+            @if (isset($users['action']))
+                <h3>Evento: {{ $users['title'] }}</h3>
+                <p><strong>Descripción:</strong> {{ $users['description'] }}</p>
+            @else
+                <p>{{ $users['description'] }}</p>
+            @endif
+
         </div>
         <div class="footer">
             <p>Este es un mensaje automático. Si tienes alguna duda, <a>contáctanos</a>.</p>
         </div>
     </div>
 </body>
-</html>

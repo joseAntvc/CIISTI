@@ -33,6 +33,10 @@ Route::get('events', [EventController::class, 'index'])
     ->middleware('auth')
     ->name('events');
 
+    Route::get('events/filter/{id}', [EventController::class, 'filter'])
+    ->middleware('auth')
+    ->name('eventsFilter');
+
 Route::get('/events/{id}/moderators', [EventController::class, 'getModerators'])->name('getModerators');
 Route::post('/events/{id}/update-moderators', [EventController::class, 'updateModerators'])->name('events.updateModerators');
 

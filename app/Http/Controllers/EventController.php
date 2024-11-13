@@ -2,21 +2,35 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ComunicationMail;
 use App\Models\Event;
 use App\Models\Location;
 use App\Models\Status;
 use App\Models\TypeEvent;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
-
+use function Laravel\Prompts\alert;
 
 class EventController extends Controller
 {
     public function index()
     {
         $events = Event::all();
-        return view('ciisti.events', compact('events'));
+        $idstatus = 0;
+        return view('ciisti.events', compact('events','idstatus'));
+    }
+
+    public function filter($status = 0)
+    {
+        if ($status == 0) {
+            $events = Event::all();
+        } else {
+            $events = Event::where('id_status', $status)->get();
+        }
+        $idstatus =$status;
+        return view('ciisti.events', compact('events','idstatus'))->render();
     }
 
     public function getModerators(int $id)
@@ -93,6 +107,15 @@ class EventController extends Controller
             $event->id_speaker = $request->input('speaker');
             $event->save();
 
+            $data = [
+                'title' => $request->input('title'),
+                'description' => $request->input('description'),
+                'action' => 'Creación de evento',
+            ];
+            $emails = collect();
+            $emails = $emails->merge(User::where('id_rol', '=', 2)->pluck('email'));
+            $emails = $emails->unique();
+            Mail::to($emails->toArray())->send(new ComunicationMail($data));
             return response()->json(['message' => 'Evento registrado.'], 200);
         }
     }
@@ -115,6 +138,16 @@ class EventController extends Controller
     {
         $event = Event::find($id);
         $event->moderators()->sync([]);
+
+        $data = [
+            'title' => $event->title,
+            'description' => $event->description,
+            'action' => 'Eliminación de evento',
+        ];
+        $emails = collect();
+        $emails = $emails->merge(User::where('id_rol', '=', 2)->pluck('email'));
+        $emails = $emails->unique();
+        Mail::to($emails->toArray())->send(new ComunicationMail($data));
         $event->delete();
 
         return response()->json(['message' => 'Event eliminado.']);

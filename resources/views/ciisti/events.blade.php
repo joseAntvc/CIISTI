@@ -11,11 +11,13 @@
                             <h5 class="mb-0">Eventos</h5>
                         </div>
                         <div class="d-flex flex-row align-items-center">
-                            <select class="form-control custom-select me-4 mb-0">
-                                <option>Todos</option>
-                                <option value="" disabled>───────</option>
-                                <option>Programado</option>
-                                <option>Cancelado</option>
+                            <select id="filter" class="form-control custom-select me-4 mb-0">
+                                <option value="0" {{ $idstatus == 0 ? 'selected' : '' }}>Todos</option>
+                                <option value="1" {{ $idstatus == 1 ? 'selected' : '' }}>Programado</option>
+                                <option value="2" {{ $idstatus == 2 ? 'selected' : '' }}>En curso</option>
+                                <option value="3" {{ $idstatus == 3 ? 'selected' : '' }}>Finalizado</option>
+                                <option value="4" {{ $idstatus == 4 ? 'selected' : '' }}>Cancelado</option>
+                                <option value="5" {{ $idstatus == 5 ? 'selected' : '' }}>Pospuesto</option>
                             </select>
                             <a onclick="formEvent()" class="btn btn-sm mb-0 custom-button" type="button">+&nbsp;Agregar evento</a>
                         </div>
@@ -92,4 +94,11 @@
             </div>
         </div>
     </div>
+    <script>
+        // Escucha los cambios en el filtro y redirige a la ruta correspondiente
+        document.getElementById('filter').addEventListener('change', function() {
+            const status = this.value;
+            window.location.href = `/events/filter/${status}`;
+        });
+    </script>
 @endsection
